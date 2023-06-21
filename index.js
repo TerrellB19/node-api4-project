@@ -24,7 +24,6 @@ server.post('/api/login', (req, res) => {
     } else {
         for(let i = 0; i < Users.length; i++){
             if(Users[i].username === username && Users[i].password === password){
-                console.log(Users[i].username)
                 res.status(200).send(`welcome ${username}`)
             } else if(i === Users.length -1){
                 res.status(404).send('Wrong login info')
