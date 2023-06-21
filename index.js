@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const port = process.env.PORT || 9000
 const Users = require('./usersData')
+let nextID = 9
 
 server.use(express.json())
 server.use(cors())
@@ -36,7 +37,7 @@ server.post('/api/login', (req, res) => {
 server.post('/api/register', async (req, res) => {
     const { username, password } = req.body
     const userData = await req.body
-
+    userData.uid = nextID++ 
     if(!username || !password){
         res.status(404).json({message: "Name and Password required"})
     } else {
